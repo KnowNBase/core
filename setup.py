@@ -1,7 +1,7 @@
-from setuptools import setup, find_packages  # type: ignore
+from setuptools import setup  # type: ignore
 
 setup(
-      name="knowbase",
+      name="knb",
       version="0.1",
       url="https://github.com/intey/knb-core",
       license="MIT",
@@ -9,11 +9,11 @@ setup(
       author_email="ziexe0@gmail.com",
       description="Core domain for making knowledge base",
       packages=[
-            '.',
-            'errors',
-            'use_cases',
-            'utils',
-            ],
+            'knb',
+            'knb.errors',
+            'knb.use_cases',
+            'knb.utils',
+      ],
       long_description=open("README.md").read(),
       zip_safe=False,
 )

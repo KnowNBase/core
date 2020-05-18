@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "knb"
+version = "0.1.0"
+description = ""
+authors = ["intey <ziexe0@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.4.2"
+mypy = "^0.770"
+pytest-mimesis = "^1.1.0"
+mimesis = "^4.0.0"
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

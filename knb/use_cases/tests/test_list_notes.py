@@ -2,8 +2,8 @@ from unittest.mock import Mock
 
 import pytest  # type: ignore
 
-from knb.use_cases import specs
 from knb.use_cases import list_notes
+from knb.use_cases import specs
 from knb.utils import factory
 
 
@@ -23,7 +23,7 @@ def test_list_notes(gateway):
 
     response: list_notes.Output = uc(list_notes.Input(user_id="1", page=1))
     spec = specs.AuthorSpec("1").and_spec(specs.PageSpec(1, 100))
-    gateway.load_notes.assert_called_with([spec])
+    gateway.load_notes.assert_called_with(spec)
     assert not response.errors
     assert response.notes
 
@@ -34,7 +34,7 @@ def test_list_other_page(gateway):
 
     response: list_notes.Output = uc(list_notes.Input(user_id="1", page=2))
     spec = specs.AuthorSpec("1").and_spec(specs.PageSpec(2, 100))
-    gateway.load_notes.assert_called_with([spec])
+    gateway.load_notes.assert_called_with(spec)
     assert not response.errors
     assert response.notes
 
@@ -47,4 +47,4 @@ def test_list_my_notes(gateway):
     page_spec = specs.PageSpec(1, 100)
     spec = author_spec.and_spec(page_spec)
     # noinspection PyUnresolvedReferences
-    gateway.load_notes.assert_called_with([spec])
+    gateway.load_notes.assert_called_with(spec)

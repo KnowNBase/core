@@ -14,7 +14,7 @@ class IGateway(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def load_notes(self, specs: t.List[specs.Spec]) -> t.List[Note]:
+    def load_notes(self, spec: specs.Spec) -> t.List[Note]:
         pass
 
 
@@ -40,7 +40,7 @@ class UseCase(AbstractUseCase[Input, Output]):
         # self.permission_service.check_user(user, self)
         spec: specs.Spec = specs.AuthorSpec(input.user_id)
         spec = spec.and_spec(specs.PageSpec(input.page, 100))
-        notes = self.gateway.load_notes([spec])
+        notes = self.gateway.load_notes(spec)
         return Output(notes=notes)
 
     def _error_response(self, error: BaseError) -> Output:

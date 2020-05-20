@@ -22,11 +22,11 @@ class Output:
 class IGateway(metaclass=ABCMeta):
     @abstractmethod
     def get_user(self, user_id: str) -> User:
-        pass
+        """ """
 
     @abstractmethod
     def load_notes(self, spec: specs.Spec) -> t.List[Note]:
-        pass
+        """ """
 
 
 @dataclass(eq=False)

@@ -1,5 +1,6 @@
+import typing as t
 from abc import ABCMeta
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from knb.errors import BaseError
 from knb.use_cases import AbstractUseCase
@@ -12,7 +13,7 @@ class Input:
 
 @dataclass
 class Output:
-    pass
+    errors: t.List[BaseError] = field(default_factory=list)
 
 
 class IGateway(metaclass=ABCMeta):
@@ -27,4 +28,4 @@ class UseCase(AbstractUseCase[Input, Output]):
         pass
 
     def _error_response(self, error: BaseError) -> Output:
-        pass
+        return Output(errors=[error])

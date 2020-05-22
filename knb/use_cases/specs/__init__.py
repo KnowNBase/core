@@ -30,3 +30,10 @@ class PageSpec(Spec):
 @dataclass
 class AuthorSpec(Spec):
     author_id: str
+
+
+class FieldValueMatchSpec(Spec):
+    def __init__(self, **kwargs):
+        kws = list(kwargs.items())
+        assert len(kws) > 0
+        self.field_name, self.field_value = kws[0]

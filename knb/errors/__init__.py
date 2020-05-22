@@ -28,3 +28,7 @@ class NotFoundError(StorageError):
 @dataclass(repr=False)
 class CommonError(BaseError):
     message: str
+
+@dataclass(repr=False)
+class PermissionDeniedError(BaseError):
+    pass
